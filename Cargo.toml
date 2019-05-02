@@ -17,7 +17,9 @@ console_error_panic_hook = "0.1.6"
 version = "0.3.4"
 features = [
     'Document',
+    'HtmlElement',
     'Element',
+    'Node',
     'HtmlCanvasElement',
     'WebGlBuffer',
     'WebGlRenderingContext',
