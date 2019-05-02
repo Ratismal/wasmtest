@@ -57,7 +57,8 @@ pub fn start() -> Result<(), JsValue> {
         .dyn_into::<WebAssembly::Memory>()?
         .buffer();
     let vertices_location = vertices.as_ptr() as u32 / 4;
-    let vert_array = js_sys::Float32Array::new(&memory_buffer);
+    let vert_array = js_sys::Float32Array::new(&memory_buffer)
+        .subarray(vertices_location, vertices_location + vertices.len() as u32);
 
     let buffer = context.create_buffer().ok_or("failed to create buffer")?;
     context.bind_buffer(WebGlRenderingContext::ARRAY_BUFFER, Some(&buffer));
